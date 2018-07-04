@@ -135,7 +135,7 @@
 
     freeboard.loadWidgetPlugin({
         "type_name": "longdo_map",
-        "display_name": "Longdo Map",
+        "display_name": "Map",
         "settings": [
             {
                 "name": "lat",
