@@ -2140,168 +2140,170 @@ $.extend(freeboard, jQuery.eventEmitter),
             newInstance: function(a, b) {
                 b(new m(a))
             }
-        }), freeboard.addStyle(".gm-style-cc a", "text-shadow:none;");
-        var n = function(a) {
-            function b() {
-                if (c && d && f.lat && f.lon) {
-                    var a = new google.maps.LatLng(f.lat, f.lon);
-                    d.setPosition(a), c.panTo(a)
-                }
-            }
-            var c, d, e = a,
-                f = {};
-            this.render = function(a) {
-                function e() {
-                    var e = {
-                        zoom: 13,
-                        center: new google.maps.LatLng(37.235, -115.811111),
-                        disableDefaultUI: !0,
-                        draggable: !1,
-                        styles: [{
-                            featureType: "water",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#2a2a2a"
-                            }]
-                        }, {
-                            featureType: "landscape",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 20
-                            }]
-                        }, {
-                            featureType: "road.highway",
-                            elementType: "geometry.fill",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 17
-                            }]
-                        }, {
-                            featureType: "road.highway",
-                            elementType: "geometry.stroke",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 29
-                            }, {
-                                weight: .2
-                            }]
-                        }, {
-                            featureType: "road.arterial",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 18
-                            }]
-                        }, {
-                            featureType: "road.local",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 16
-                            }]
-                        }, {
-                            featureType: "poi",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 21
-                            }]
-                        }, {
-                            elementType: "labels.text.stroke",
-                            stylers: [{
-                                visibility: "on"
-                            }, {
-                                color: "#000000"
-                            }, {
-                                lightness: 16
-                            }]
-                        }, {
-                            elementType: "labels.text.fill",
-                            stylers: [{
-                                saturation: 36
-                            }, {
-                                color: "#000000"
-                            }, {
-                                lightness: 40
-                            }]
-                        }, {
-                            elementType: "labels.icon",
-                            stylers: [{
-                                visibility: "off"
-                            }]
-                        }, {
-                            featureType: "transit",
-                            elementType: "geometry",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 19
-                            }]
-                        }, {
-                            featureType: "administrative",
-                            elementType: "geometry.fill",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 20
-                            }]
-                        }, {
-                            featureType: "administrative",
-                            elementType: "geometry.stroke",
-                            stylers: [{
-                                color: "#000000"
-                            }, {
-                                lightness: 17
-                            }, {
-                                weight: 1.2
-                            }]
-                        }]
-                    };
-                    c = new google.maps.Map(a, e), google.maps.event.addDomListener(a, "mouseenter", function(a) {
-                        a.cancelBubble = !0, c.hover || (c.hover = !0, c.setOptions({
-                            zoomControl: !0
-                        }))
-                    }), google.maps.event.addDomListener(a, "mouseleave", function(a) {
-                        c.hover && (c.setOptions({
-                            zoomControl: !1
-                        }), c.hover = !1)
-                    }), d = new google.maps.Marker({
-                        map: c
-                    }), b()
-                }
-                window.google && window.google.maps ? e() : (window.gmap_initialize = e, head.js("https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=gmap_initialize"))
-            }, this.onSettingsChanged = function(a) {
-                e = a
-            }, this.onCalculatedValueChanged = function(a, c) {
-                "lat" == a ? f.lat = c : "lon" == a && (f.lon = c), b()
-            }, this.onDispose = function() {}, this.getHeight = function() {
-                return 4
-            }, this.onSettingsChanged(a)
-        };
-        freeboard.loadWidgetPlugin({
-            type_name: "google_map",
-            display_name: "Google Map",
-            fill_size: !0,
-            settings: [{
-                name: "lat",
-                display_name: "Latitude",
-                type: "calculated"
-            }, {
-                name: "lon",
-                display_name: "Longitude",
-                type: "calculated"
-            }],
-            newInstance: function(a, b) {
-                b(new n(a))
-            }
-        }), freeboard.addStyle(".html-widget", "white-space:normal;width:100%;height:100%");
+        })
+        // , freeboard.addStyle(".gm-style-cc a", "text-shadow:none;");
+        // var n = function(a) {
+        //     function b() {
+        //         if (c && d && f.lat && f.lon) {
+        //             var a = new google.maps.LatLng(f.lat, f.lon);
+        //             d.setPosition(a), c.panTo(a)
+        //         }
+        //     }
+        //     var c, d, e = a,
+        //         f = {};
+        //     this.render = function(a) {
+        //         function e() {
+        //             var e = {
+        //                 zoom: 13,
+        //                 center: new google.maps.LatLng(37.235, -115.811111),
+        //                 disableDefaultUI: !0,
+        //                 draggable: !1,
+        //                 styles: [{
+        //                     featureType: "water",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#2a2a2a"
+        //                     }]
+        //                 }, {
+        //                     featureType: "landscape",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 20
+        //                     }]
+        //                 }, {
+        //                     featureType: "road.highway",
+        //                     elementType: "geometry.fill",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 17
+        //                     }]
+        //                 }, {
+        //                     featureType: "road.highway",
+        //                     elementType: "geometry.stroke",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 29
+        //                     }, {
+        //                         weight: .2
+        //                     }]
+        //                 }, {
+        //                     featureType: "road.arterial",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 18
+        //                     }]
+        //                 }, {
+        //                     featureType: "road.local",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 16
+        //                     }]
+        //                 }, {
+        //                     featureType: "poi",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 21
+        //                     }]
+        //                 }, {
+        //                     elementType: "labels.text.stroke",
+        //                     stylers: [{
+        //                         visibility: "on"
+        //                     }, {
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 16
+        //                     }]
+        //                 }, {
+        //                     elementType: "labels.text.fill",
+        //                     stylers: [{
+        //                         saturation: 36
+        //                     }, {
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 40
+        //                     }]
+        //                 }, {
+        //                     elementType: "labels.icon",
+        //                     stylers: [{
+        //                         visibility: "off"
+        //                     }]
+        //                 }, {
+        //                     featureType: "transit",
+        //                     elementType: "geometry",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 19
+        //                     }]
+        //                 }, {
+        //                     featureType: "administrative",
+        //                     elementType: "geometry.fill",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 20
+        //                     }]
+        //                 }, {
+        //                     featureType: "administrative",
+        //                     elementType: "geometry.stroke",
+        //                     stylers: [{
+        //                         color: "#000000"
+        //                     }, {
+        //                         lightness: 17
+        //                     }, {
+        //                         weight: 1.2
+        //                     }]
+        //                 }]
+        //             };
+        //             c = new google.maps.Map(a, e), google.maps.event.addDomListener(a, "mouseenter", function(a) {
+        //                 a.cancelBubble = !0, c.hover || (c.hover = !0, c.setOptions({
+        //                     zoomControl: !0
+        //                 }))
+        //             }), google.maps.event.addDomListener(a, "mouseleave", function(a) {
+        //                 c.hover && (c.setOptions({
+        //                     zoomControl: !1
+        //                 }), c.hover = !1)
+        //             }), d = new google.maps.Marker({
+        //                 map: c
+        //             }), b()
+        //         }
+        //         window.google && window.google.maps ? e() : (window.gmap_initialize = e, head.js("https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=gmap_initialize"))
+        //     }, this.onSettingsChanged = function(a) {
+        //         e = a
+        //     }, this.onCalculatedValueChanged = function(a, c) {
+        //         "lat" == a ? f.lat = c : "lon" == a && (f.lon = c), b()
+        //     }, this.onDispose = function() {}, this.getHeight = function() {
+        //         return 4
+        //     }, this.onSettingsChanged(a)
+        // };
+        // freeboard.loadWidgetPlugin({
+        //     type_name: "google_map",
+        //     display_name: "Google Map",
+        //     fill_size: !0,
+        //     settings: [{
+        //         name: "lat",
+        //         display_name: "Latitude",
+        //         type: "calculated"
+        //     }, {
+        //         name: "lon",
+        //         display_name: "Longitude",
+        //         type: "calculated"
+        //     }],
+        //     newInstance: function(a, b) {
+        //         b(new n(a))
+        //     }
+        // })
+        , freeboard.addStyle(".html-widget", "white-space:normal;width:100%;height:100%");
         var o = function(a) {
             var b = $('<div class="html-widget"></div>'),
                 c = a;
