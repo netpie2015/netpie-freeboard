@@ -4,10 +4,10 @@
 
 (function () {
 
-    var self = this
-    self.widgetID = randomString(16);
-
     var longdoWidget = function (settings) {
+        var self = this
+        self.widgetID = randomString(16);
+        console.log(self.widgetID)
         var mapElement = $("<div id=\"map_ld" + self.widgetID + "\"></div>");
         var currentSettings = settings
         var map
