@@ -7,7 +7,6 @@
     var longdoWidget = function (settings) {
         var self = this
         self.widgetID = randomString(16);
-        console.log(self.widgetID)
         var mapElement = $("<div id=\"map_ld" + self.widgetID + "\"></div>");
         var currentSettings = settings
         var map
@@ -75,7 +74,6 @@
             if (currentSettings.height_block === undefined) {
                 currentSettings.height_block = 4;
             }
-            console.log(currentSettings.height_block)
             return Number(currentSettings.height_block);
         }
 
