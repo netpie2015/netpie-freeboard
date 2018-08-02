@@ -9,6 +9,17 @@
         self.widgetID = randomString(16);
         var mapElement = $("<div id=\"map_ld" + self.widgetID + "\"></div>");
         var currentSettings = settings
+
+        // current Settings default
+        if (currentSettings.style === undefined)
+            currentSettings.style = 'map'
+        if (currentSettings.toolbar === undefined)
+            currentSettings.toolbar = false
+        if (currentSettings.traffic === undefined)
+            currentSettings.traffic = false
+        if (currentSettings.zoom === undefined)
+            currentSettings.zoom = 8
+
         var map
         var currentPosition = {}
         var marker
@@ -22,24 +33,21 @@
             $(element).append(mapElement)
             setHeight()
             var maphtml = document.getElementById('map_ld' + self.widgetID)
+            var defaultPosition = { lon: 0, lat: 0 }
+            currentPosition = defaultPosition
             function initializeMap() {
-                var defaultPosition = { lon: 0, lat: 0 }
                 var options = {
                     placeholder: maphtml,
-                    location: defaultPosition,
-                    zoom: (15),
+                    location: currentPosition,
+                    zoom: currentSettings.zoom,
                     language: 'th',
                     lastView: false
                 }
-
                 map = new longdo.Map(options)
-                updatePosition()
+                updatePosition(currentPosition)
                 mapOptions(currentSettings)
             }
-            window.longdo == null ? head.load("http://api.longdo.com/map/?key=36c688d02da345cda677e862f7319f37") : initializeMap()
-            head.ready(() => {
-                initializeMap()
-            })
+            initializeMap()
         }
 
         this.onSettingsChanged = function (newSettings) {
@@ -47,7 +55,7 @@
             // Map & Marker
             if (currentSettings.lat === "" || currentSettings.lat === undefined) currentPosition.lat = 0
             if (currentSettings.lon === "" || currentSettings.lon === undefined) currentPosition.lon = 0
-            updatePosition()
+            updatePosition(currentPosition)
 
             // Options
             mapOptions(currentSettings)
@@ -64,7 +72,7 @@
             if (settingName == "lon") {
                 currentPosition.lon = newValue
             }
-            updatePosition()
+            updatePosition(currentPosition)
         }
 
         this.onDispose = function () {
@@ -80,12 +88,15 @@
         this.onSettingsChanged(settings)
 
         function setHeight() {
+            if (currentSettings.height_block === undefined) {
+                currentSettings.height_block = 4;
+            }
             mapElement.css({
                 height: currentSettings.height_block * 60 + "px",
             });
         }
 
-        function updatePosition() {
+        function updatePosition(currentPosition) {
             if (map && currentPosition) {
                 // Map & Marker & Zoom
                 map.location(currentPosition)
@@ -134,6 +145,7 @@
     freeboard.loadWidgetPlugin({
         "type_name": "map",
         "display_name": "Map",
+        "external_scripts": ["plugins/thirdparty/longdo.js"],
         "settings": [
             {
                 "name": "lat",
