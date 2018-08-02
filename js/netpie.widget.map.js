@@ -47,10 +47,7 @@
                 updatePosition(currentPosition)
                 mapOptions(currentSettings)
             }
-            window.longdo == null ? head.load("http://api.longdo.com/map/?key=36c688d02da345cda677e862f7319f37") : initializeMap()
-            head.ready(() => {
-                initializeMap()
-            })
+            initializeMap()
         }
 
         this.onSettingsChanged = function (newSettings) {
@@ -148,6 +145,7 @@
     freeboard.loadWidgetPlugin({
         "type_name": "map",
         "display_name": "Map",
+        "external_scripts": ["plugins/thirdparty/longdo.js"],
         "settings": [
             {
                 "name": "lat",
