@@ -30,8 +30,6 @@
         }
 
         this.render = function (element) {
-            console.log('render')
-            console.log(element)
             $(element).append(mapElement)
             setHeight()
             var maphtml = document.getElementById('map_ld' + self.widgetID)
@@ -56,9 +54,7 @@
         }
 
         this.onSettingsChanged = function (newSettings) {
-            console.log('onSettingsChanged')
             currentSettings = newSettings
-            console.log(newSettings)
             // Map & Marker
             if (currentSettings.lat === "" || currentSettings.lat === undefined) currentPosition.lat = 0
             if (currentSettings.lon === "" || currentSettings.lon === undefined) currentPosition.lon = 0
@@ -114,7 +110,6 @@
         function mapOptions(currentSettings) {
             if (map) {
                 // style
-                console.log(currentSettings)
                 if (currentSettings.style === "map") map.Layers.setBase(longdo.Layers.POI_EN)
                 else if (currentSettings.style === "hybrid") map.Layers.setBase(longdo.Layers.GOOGLE_HYBRID)
 
