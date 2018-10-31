@@ -30,8 +30,6 @@
         }
 
         this.render = function (element) {
-            console.log('render')
-            console.log(element)
             $(element).append(mapElement)
             setHeight()
             var maphtml = document.getElementById('map_ld' + self.widgetID)
@@ -49,16 +47,11 @@
                 updatePosition(currentPosition)
                 mapOptions(currentSettings)
             }
-            window.longdo == null ? head.load("http://api.longdo.com/map/?key=36c688d02da345cda677e862f7319f37") : initializeMap()
-            head.ready(() => {
-                initializeMap()
-            })
+            initializeMap()
         }
 
         this.onSettingsChanged = function (newSettings) {
-            console.log('onSettingsChanged')
             currentSettings = newSettings
-            console.log(newSettings)
             // Map & Marker
             if (currentSettings.lat === "" || currentSettings.lat === undefined) currentPosition.lat = 0
             if (currentSettings.lon === "" || currentSettings.lon === undefined) currentPosition.lon = 0
@@ -114,7 +107,6 @@
         function mapOptions(currentSettings) {
             if (map) {
                 // style
-                console.log(currentSettings)
                 if (currentSettings.style === "map") map.Layers.setBase(longdo.Layers.POI_EN)
                 else if (currentSettings.style === "hybrid") map.Layers.setBase(longdo.Layers.GOOGLE_HYBRID)
 
@@ -153,6 +145,7 @@
     freeboard.loadWidgetPlugin({
         "type_name": "map",
         "display_name": "Map",
+        "external_scripts": ["plugins/thirdparty/longdo.js"],
         "settings": [
             {
                 "name": "lat",
