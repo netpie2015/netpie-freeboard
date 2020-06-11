@@ -2112,7 +2112,17 @@ $.extend(freeboard, jQuery.eventEmitter),
             }, this.onSettingsChanged = function(a) {
                 h = a, e.html(_.isUndefined(a.title) ? "" : a.title), b()
             }, this.onCalculatedValueChanged = function(a, e) {
+
                 "value" == a && (i = Boolean(e)), "on_text" == a && (c = e), "off_text" == a && (d = e), b()
+                if (a=="value" && typeof(e)=='string') {
+                    g.css({
+                        "color" : e,
+                        "background-color" : e,
+                        "box-shadow" : "0px 0px 15px "+e,
+                        "border-color" : "#FDF1DF"
+                    });
+                } 
+
             }, this.onDispose = function() {}, this.getHeight = function() {
                 return 1
             }, this.onSettingsChanged(a)
